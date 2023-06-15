@@ -1,0 +1,24 @@
+[GLOBAL]
+# NOTE(nantas): we are living on the edge due to a required fix not yet in a
+# stable version: https://github.com/pantsbuild/pants/issues/18530
+pants_version = "2.16.0rc5"
+
+backend_packages = [
+  "pants.backend.docker",
+]
+
+[source]
+root_patterns = ["/"]
+
+
+
+[docker.registries.dev]
+address = "12345679123.dkr.ecr.us-east-1.amazonaws.com"
+repository = "{name}-dev"
+default = true
+
+[docker.registries.prod]
+address = "12345679123.dkr.ecr.us-east-1.amazonaws.com"
+repository = "{name}"
+default = false
+skip_push = true
